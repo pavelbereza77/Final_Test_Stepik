@@ -1,5 +1,7 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+
 
 def pytest_addoption(parser):
     parser.addoption('--browser_name', action='store', default="chrome",
@@ -22,3 +24,11 @@ def browser(request):
     yield browser
     print("\nquit browser..")
     browser.quit()
+
+driver=webdriver.Chrome()
+driver.get('http://selenium1py.pythonanywhere.com/')
+
+url=driver.find_element(By.CSS_SELECTOR,'#login_link')
+u=driver.current_url
+l=url.get_attribute('href')
+print('url:',l)
