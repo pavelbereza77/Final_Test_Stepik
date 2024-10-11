@@ -25,10 +25,10 @@ def browser(request):
     print("\nquit browser..")
     browser.quit()
 
-driver=webdriver.Chrome()
-driver.get('http://selenium1py.pythonanywhere.com/')
-
-url=driver.find_element(By.CSS_SELECTOR,'#login_link')
-u=driver.current_url
-l=url.get_attribute('href')
-print('url:',l)
+# driver=webdriver.Chrome()
+# driver.get('http://selenium1py.pythonanywhere.com/')
+#
+# url=driver.find_element(By.CSS_SELECTOR,'#login_link')
+# u=driver.current_url
+# l=url.get_attribute('href')
+# print('url:',l)
