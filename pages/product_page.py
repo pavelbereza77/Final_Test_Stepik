@@ -1,7 +1,7 @@
 import time
 
 from .base_page import BasePage
-from .locators import ProductPageLocator,LoginPageLocators
+from .locators import ProductPageLocator, LoginPageLocators, MainPageLocators
 
 
 class ProductPage(BasePage):
@@ -45,3 +45,6 @@ class ProductPage(BasePage):
 
     def should_login_form_after_click_link_login_in_product_page(self):
         assert self.is_element_present(*LoginPageLocators.LOGIN_FORM), 'Not form login'
+
+
+

@@ -8,6 +8,9 @@ class BasePageLocators():
 
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    BUTTON_CART_IN_MAIN_PAGE = (By.CSS_SELECTOR, '.btn-group .btn-default')
+    CART_FORM = (By.CSS_SELECTOR, '.basket-items')
+    TEXT_CART = (By.CSS_SELECTOR, '#content_inner p')
 
 
 class LoginPageLocators():

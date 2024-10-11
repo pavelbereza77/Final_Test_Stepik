@@ -4,7 +4,7 @@ from selenium.common import NoSuchElementException, NoAlertPresentException, Tim
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-from .locators import BasePageLocators
+from .locators import BasePageLocators, MainPageLocators
 
 
 class BasePage():
@@ -29,6 +29,12 @@ class BasePage():
 
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
+
+    def should_button_cart(self):
+        assert self.is_element_present(*MainPageLocators.BUTTON_CART_IN_MAIN_PAGE)
+
+    def go_to_cart(self):
+        self.browser.find_element(*MainPageLocators.BUTTON_CART_IN_MAIN_PAGE).click()
 
     def solve_quiz_and_get_code(self):
         alert = self.browser.switch_to.alert
