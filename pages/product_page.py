@@ -1,7 +1,7 @@
 import time
 
 from .base_page import BasePage
-from .locators import ProductPageLocator
+from .locators import ProductPageLocator,LoginPageLocators
 
 
 class ProductPage(BasePage):
@@ -42,3 +42,6 @@ class ProductPage(BasePage):
     def should_not_be_is_disappeared_message(self):
         assert self.is_disappeared(*ProductPageLocator.NAME_PRODUCT_IN_MASSAGE), \
             "Element is not disappeared"
+
+    def should_login_form_after_click_link_login_in_product_page(self):
+        assert self.is_element_present(*LoginPageLocators.LOGIN_FORM), 'Not form login'
