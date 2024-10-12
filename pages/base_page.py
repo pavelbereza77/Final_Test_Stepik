@@ -30,6 +30,9 @@ class BasePage():
     def should_be_login_link(self):
         assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not presented"
 
+    def goo_too_link_login(self):
+        self.browser.find_element(*BasePageLocators.LOGIN_LINK).click()
+
     def should_button_cart(self):
         assert self.is_element_present(*MainPageLocators.BUTTON_CART_IN_MAIN_PAGE)
 
@@ -66,3 +69,7 @@ class BasePage():
             return False
 
         return True
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+                                                                     " probably unauthorised user"

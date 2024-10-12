@@ -1,8 +1,37 @@
+import time
+
 import pytest
 
 from .pages.bascet_page import BasketPage
 from .pages.product_page import ProductPage
+from .pages.login_page import LoginPage
 
+
+class TestUserAddToBasketFromProductPage():
+    @pytest.fixture(scope='function', autouse=True)
+    def setup(self, browser):
+        link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
+        page = ProductPage(browser=browser, url=link)
+        page.open()
+        page.should_be_login_link()
+        page.goo_too_link_login()
+        register_page = LoginPage(browser=browser, url=browser.current_url)
+        register_page.should_be_register_form()
+        register_page.should_field_register_form()
+        register_page.should_field_register_form()
+        register_page.register_new_user(email=str(time.time()) + "@fakemail.org", password='12345678@PPgh')
+        register_page.should_be_authorized_user()
+
+    def test_user_cant_see_success_message(self, browser):
+        link = 'http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/'
+        page = ProductPage(browser=browser, url=link)
+        page.should_not_be_success_message()
+
+    def test_user_can_add_product_to_basket(self, browser):
+        link = 'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear'
+        page = ProductPage(browser=browser, url=link)
+        page.open()
+        page.should_be_product_add_cart()
 
 @pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
